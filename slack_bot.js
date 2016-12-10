@@ -103,6 +103,19 @@ controller.hears(['hello', 'hi'], 'direct_message,direct_mention,mention', funct
     });
 });
 
+controller.hears(['who do you love'], 'direct_message,direct_mention,mention', function(bot, message) {
+    bot.reply(message,'I love @fern.jimz');
+});
+
+controller.hears(['status'], 'direct_message,direct_mention,mention', function(bot, message) {
+    bot.reply(message,':clownfacegreen:');
+});
+
+controller.hears(['metal sign to (.*)'], 'direct_message,direct_mention,mention', function(bot, message) {
+    var user = message.match[1];
+    bot.reply(message, user + ':metal:');
+});
+
 controller.hears(['call me (.*)', 'my name is (.*)'], 'direct_message,direct_mention,mention', function(bot, message) {
     var name = message.match[1];
     controller.storage.users.get(message.user, function(err, user) {
